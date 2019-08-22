@@ -14,7 +14,7 @@ import com.dao.AddDao;
 @WebServlet("/UpdateAdd2")  
 public class UpdateAdd2 extends HttpServlet {  
     /**
-	 * 
+	 * get the values and update in the db 
 	 */
 	private static final long serialVersionUID = 1L;
 

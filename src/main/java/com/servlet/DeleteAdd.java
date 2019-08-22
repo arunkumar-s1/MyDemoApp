@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dao.AddDao;
+/*
+ * It reads the id from the user and delete the specific id from advertisement table
+ */
 @WebServlet("/DeleteAdd")  
 public class DeleteAdd extends HttpServlet {  
     /**

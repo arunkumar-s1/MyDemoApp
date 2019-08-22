@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.beanclass.AddPojo;
 import com.dao.AddDao;
 @WebServlet("/UpdateAdd1")  
+/*
+ * used to get the values from the user and sent the data to updateAdd2
+ */
 public class UpdateAdd1 extends HttpServlet {  
     /**
 	 * 

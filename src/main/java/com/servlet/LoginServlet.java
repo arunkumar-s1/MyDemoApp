@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;  
 public class LoginServlet extends HttpServlet {  
     /**
-	 * 
+	 * This class is used to get username and password from the user and logins into the app
 	 */
 	private static final long serialVersionUID = 1L;
 

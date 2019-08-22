@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;  
 public class LogoutServlet extends HttpServlet {  
     /**
-	 * 
+	 * this class logouts from the current user and makes the cookie invalidate.
 	 */
 	private static final long serialVersionUID = 1L;
 

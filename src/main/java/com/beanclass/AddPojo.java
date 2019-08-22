@@ -1,5 +1,7 @@
 package com.beanclass;
-
+/*
+ * It is bean class for advertisement
+ */
 public class AddPojo {
 	private String name;
 	private int id;

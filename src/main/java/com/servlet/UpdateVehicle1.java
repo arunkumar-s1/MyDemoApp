@@ -13,8 +13,8 @@ import com.beanclass.vechiclepojo;
 import com.dao.vechicleDao;  
 @WebServlet("/UpdateVehicle1")  
 public class UpdateVehicle1 extends HttpServlet {  
-    /**
-	 * 
+	/*
+	 * used to get the values from the user and sent the data to updateVehicle2
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -33,8 +33,8 @@ public class UpdateVehicle1 extends HttpServlet {
         out.print("<table>");  
         out.print("<tr><td></td><td><input type='hidden' name='id' value='"+e.getId()+"'/></td></tr>");  
         out.print("<tr><td>Name:</td><td><input type='text' name='name' value='"+e.getName()+"'/></td></tr>");  
-        out.print("<tr><td>Number of Wheels:</td><td><input type='text' name='wheels' value='"+e.getWheels()+"'/></td></tr>");  
-        out.print("<tr><td>Number of Seats:</td><td><input type='text' name='seats' value='"+e.getSeats()+"'/></td></tr>");  
+        out.print("<tr><td>Number of Wheels:</td><td><input type='number' name='wheels' value='"+e.getWheels()+"'/></td></tr>");  
+        out.print("<tr><td>Number of Seats:</td><td><input type='number' name='seats' value='"+e.getSeats()+"'/></td></tr>");  
         out.print("<tr><td>Number Plate:</td><td><input type='text' name='number_plate' value='"+e.getNumber_plate()+"'/></td></tr>");  
 //        out.print("<tr><td>Country:</td><td>");  
 //        out.print("<select name='country' style='width:150px'>");  

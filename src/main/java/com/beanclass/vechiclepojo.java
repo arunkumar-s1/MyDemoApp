@@ -1,5 +1,7 @@
 package com.beanclass;
-
+/*
+ * It is a bean class for vehicle
+ */
 public class vechiclepojo {
 		private int id;
 		private String name;

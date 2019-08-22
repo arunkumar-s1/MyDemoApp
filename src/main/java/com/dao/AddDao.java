@@ -6,6 +6,9 @@ import com.beanclass.AddPojo;
 import com.database.connection.DatabaseConnection;
 
 import java.sql.*;
+/*
+ * this class represent the database operation(CRUD) for advertisement 
+ */
 public class AddDao {
 //	 public static Connection getConnection(){  
 //	        Connection con=null;  

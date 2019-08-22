@@ -3,6 +3,7 @@ package com.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@ import com.beanclass.AddPojo;
 import com.dao.AddDao;
 
 /**
- * Servlet implementation class SaveAdd
+ * Servlet implementation class SaveAdd and used to store the values to db.
  */
 public class SaveAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -39,6 +40,8 @@ public class SaveAdd extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		 PrintWriter out=response.getWriter();  
+		 RequestDispatcher rd=request.getRequestDispatcher("link.html");  
+	        rd.include(request, response);//method may be include or forward  
 //       String id=request.getParameter("v_id"); 
 //       int v_id = Integer.parseInt(id);
        String name=request.getParameter("name");  
@@ -57,6 +60,7 @@ public class SaveAdd extends HttpServlet {
        if(status>0){  
            out.print("<p>Record saved successfully!</p>");  
            request.getRequestDispatcher("AddAdvertisement.html").include(request, response);  
+           out.print("<a href='ProfileServlet'>Back to Profile</a>");
 //           out.print("<a href='ProfileServlet'>Back to Profile</a>");
        }else{  
            out.println("Sorry! unable to save record. Try giving differnt id");  

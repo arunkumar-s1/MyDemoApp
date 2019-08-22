@@ -2,8 +2,9 @@ package com.servlet;
 
 import java.io.IOException;  
 import java.io.PrintWriter;  
-import java.util.List;  
-  
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;  
 import javax.servlet.annotation.WebServlet;  
 import javax.servlet.http.HttpServlet;  
@@ -17,16 +18,22 @@ import com.dao.AddDao;
 @WebServlet("/ViewAdd")  
 public class ViewAdd extends HttpServlet {  
     /**
-	 * 
+	 * used to display the values in the web 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)   
                throws ServletException, IOException {  
-        response.setContentType("text/html");  
+//		request.getRequestDispatcher("link.html").forward(request, response);
+		
+		response.setContentType("text/html");
         PrintWriter out=response.getWriter();  
+        RequestDispatcher rd=request.getRequestDispatcher("link.html");  
+        rd.include(request, response);//method may be include or forward  
         out.println("<a href='AddAdvertisement.html'>Add New Advertisement</a>");  
         out.println("<h1>Add Advertisement</h1>");  
+        String id=request.getParameter("id");  
+        System.out.println("View: "+id);
           
         List<AddPojo> list=AddDao.getAllAdd();  
           

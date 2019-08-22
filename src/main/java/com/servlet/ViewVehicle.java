@@ -2,8 +2,9 @@ package com.servlet;
 
 import java.io.IOException;  
 import java.io.PrintWriter;  
-import java.util.List;  
-  
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;  
 import javax.servlet.annotation.WebServlet;  
 import javax.servlet.http.HttpServlet;  
@@ -13,16 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.beanclass.vechiclepojo;
 import com.dao.vechicleDao;  
 @WebServlet("/ViewVehicle")  
+/**
+* used to display the values in the web 
+*/
 public class ViewVehicle extends HttpServlet {  
-    /**
-	 * 
-	 */
+   
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)   
                throws ServletException, IOException {  
-        response.setContentType("text/html");  
+		response.setContentType("text/html");
         PrintWriter out=response.getWriter();  
+        RequestDispatcher rd=request.getRequestDispatcher("link.html");  
+        rd.include(request, response);//method may be include or forward  
+        out.println("<a href='AddVechicle.html'></a>");  
         out.println("<a href='AddVechicle.html'>Add New Vehicle</a>");  
         out.println("<h1>Vehicle List</h1>");  
           
@@ -37,6 +42,8 @@ public class ViewVehicle extends HttpServlet {
         		 					+ "<td>"+e.getSeats()+"</td>"
         		 							+ "<td>"+e.getNumber_plate()+"</td>"
 //                 +"<td>"+e.getEmail()+"</td><td>"+e.getCountry()+"</td>
+//        		 +"<td><a href='ViewAdd?id="+e.getId()+"'>View Advertisement</a></td>  "  
+//        		 +"<td><a href='AddAdvertisement.jsp?id="+e.getId()+"'>Add Advertisement</a></td>  "        		 							
         		 +"<td><a href='UpdateVehicle1?id="+e.getId()+"'>Update</a></td>  "
                  +"<td><a href='DeleteVehicle?id="+e.getId()+"'>delete</a></td></tr>");  
         }  

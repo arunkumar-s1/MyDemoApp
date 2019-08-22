@@ -3,11 +3,36 @@
 <head>  
 <meta charset="ISO-8859-1">  
 <title>Insert title here</title>  
+<script>
+function validateForm() {
+	 var v_name = document.forms["myForm"]["v_name"].value;
+  var wheels = document.forms["myForm"]["wheels"].value;
+  var seats = document.forms["myForm"]["seats"].value;
+  var number_plate = document.forms["myForm"]["number_plate"].value;
+  if (v_name == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  if (wheels == "" || isNaN(wheels)) {
+	    alert("wheels must be valid");
+	    return false;
+	}
+  if (seats == "" || isNaN(seats)) {
+	    alert("seats must be valid");
+	    return false;
+	}
+ 
+  if (number_plate == "" ) {
+	    alert("number_plate must be valid");
+	    return false;
+	}
+}  
+</script>
 </head>  
 <body>  
   
 <h1>Add New Vehicle</h1>  
-<form action="SaveVechicle" method="post">  
+<form name="myForm" action="SaveVechicle" method="post" onsubmit="return validateForm()">  
 <table>  
 <tr><td>Name:</td><td><input type="text" name="v_name"/></td></tr>  
 <tr><td>Number of Wheels:</td><td><input type="text" name="wheels"/></td></tr>  
@@ -18,7 +43,7 @@
 </form>  
   
 <br/>  
-<a href="ViewVehicle">View Vehicle</a>  
+
 <br>
 
 </body>  

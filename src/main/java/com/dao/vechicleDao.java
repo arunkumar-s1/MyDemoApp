@@ -1,10 +1,14 @@
 package com.dao;
 import java.util.*;
 
+
 import com.beanclass.vechiclepojo;
 import com.database.connection.DatabaseConnection;
 
 import java.sql.*;
+/*
+ * this class represent the database operation(CRUD) for Vehicle 
+ */
 public class vechicleDao {
 //	 public static Connection getConnection(){  
 //	        Connection con=null;  

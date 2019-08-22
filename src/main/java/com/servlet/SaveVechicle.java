@@ -1,8 +1,9 @@
 package com.servlet;
 
 import java.io.IOException;  
-import java.io.PrintWriter;  
-  
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;  
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
@@ -13,7 +14,7 @@ import com.dao.vechicleDao;
 //@WebServlet("/SaveVechicle")  
 public class SaveVechicle extends HttpServlet {  
     /**
-	 * 
+	 *  used to store the  vehicle values to the db
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -21,6 +22,8 @@ public class SaveVechicle extends HttpServlet {
          throws ServletException, IOException {  
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
+        RequestDispatcher rd=request.getRequestDispatcher("link.html");  
+        rd.include(request, response);//method may be include or forward  
 //        String id=request.getParameter("v_id"); 
 //        int v_id = Integer.parseInt(id);
         String name=request.getParameter("v_name");  
@@ -39,6 +42,7 @@ public class SaveVechicle extends HttpServlet {
         if(status>0){  
             out.print("<p>Record saved successfully!</p>");  
             request.getRequestDispatcher("AddVechicle.html").include(request, response);  
+            out.print("<a href='ProfileServlet'>Back to Profile</a>");
 //            out.print("<a href='ProfileServlet'>Back to Profile</a>");
         }else{  
             out.println("Sorry! unable to save record. Try giving differnt id");  

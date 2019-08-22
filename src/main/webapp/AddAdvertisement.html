@@ -2,12 +2,36 @@
 <html>  
 <head>  
 <meta charset="ISO-8859-1">  
-<title>Insert title here</title>  
+<title>Insert title here</title>
+<script>
+function validateForm() {
+  var name = document.forms["myForm"]["name"].value;
+  var id = document.forms["myForm"]["id"].value;
+  var kilometer = document.forms["myForm"]["kilometer"].value;
+  var user_posted = document.forms["myForm"]["user_posted"].value;
+  if (name == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  if (id == "" || isNaN(id)) {
+	    alert("id must be valid");
+	    return false;
+	}
+  if (kilometer == "" ) {
+	    alert("kilometer should be given in km and must be valid");
+	    return false;
+	}
+  if (user_posted == "" ) {
+	    alert("user posted must be valid");
+	    return false;
+	}
+}  
+</script>
 </head>  
 <body>  
   
 <h1>Add New Advertisement</h1>  
-<form action="SaveAdd" method="post">  
+<form name="myForm" action="SaveAdd" method="post" onsubmit="return validateForm()">  
 <table>  
 <tr><td>Name:</td><td><input type="text" name="name"/></td></tr>  
 <tr><td>Id:</td><td><input type="text" name="id"/></td></tr>  
@@ -18,9 +42,8 @@
 </form>  
   
 <br/>  
-<a href="ViewAdd">View Adds</a>  
+
 <br>
 
-  
 </body>  
 </html>  

@@ -13,9 +13,9 @@ import com.beanclass.vechiclepojo;
 import com.dao.vechicleDao;  
 @WebServlet("/UpdateVehicle2")  
 public class UpdateVehicle2 extends HttpServlet {  
-    /**
-	 * 
-	 */
+	   /**
+		 * get the values and update in the db 
+		 */
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)   
