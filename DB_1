@@ -1,0 +1,3 @@
+create table user1
+(name varchar(10));
+
