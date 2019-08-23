@@ -56,7 +56,13 @@ public class SaveAdd extends HttpServlet {
        a.setId(idInt);
        a.setKilometer(kilometer);
        a.setUser_posted(user_posted);
-       int status=AddDao.save(a);  
+       int status=0;
+	try {
+		status = AddDao.save(a);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		System.out.println("Save Add: Connection failed");
+	}  
        if(status>0){  
            out.print("<p>Record saved successfully!</p>");  
            request.getRequestDispatcher("AddAdvertisement.html").include(request, response);  

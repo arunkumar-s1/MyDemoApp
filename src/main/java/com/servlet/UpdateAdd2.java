@@ -1,8 +1,9 @@
 package com.servlet;
 
 import java.io.IOException;  
-import java.io.PrintWriter;  
-  
+import java.io.PrintWriter;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;  
 import javax.servlet.annotation.WebServlet;  
 import javax.servlet.http.HttpServlet;  
@@ -40,7 +41,13 @@ public class UpdateAdd2 extends HttpServlet {
         e.setUser_posted(user_posted);
 //        e.setNumber_plate(number_plate);  
           
-        int status=AddDao.update(e);  
+        int status=0;
+		try {
+			status = AddDao.update(e);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			System.out.println("Update Add2: Connection failed");
+		}  
         if(status>0){  
             response.sendRedirect("ViewAdd");  
         }else{  

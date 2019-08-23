@@ -10,18 +10,11 @@ import java.sql.*;
  * this class represent the database operation(CRUD) for Vehicle 
  */
 public class vechicleDao {
-//	 public static Connection getConnection(){  
-//	        Connection con=null;  
-//	        try{  
-//	            Class.forName("oracle.jdbc.driver.OracleDriver");  
-//	            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","password");  
-//	        }catch(Exception e){System.out.println(e);}  
-//	        return con;  
-//	    }  
-	    public static int save(vechiclepojo v){  
+	    public static int save(vechiclepojo v) throws SQLException{  
 	        int status=0;  
+	        Connection con=null;
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement(  
 	                         "insert into vehicle values (seq_person.nextval,?,?,?,?)");  
 //	            ps.setInt(1, v.getId());
@@ -32,14 +25,16 @@ public class vechicleDao {
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
-	        }catch(Exception ex){ex.printStackTrace();}  
+	        }catch(Exception ex){
+	        System.out.println("Connection failed");}  
 	          
 	        return status;  
 	    }  
-	    public static int update(vechiclepojo e){  
+	    public static int update(vechiclepojo e) throws SQLException{  
 	        int status=0;  
+	        Connection con=null;
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement(  
 	                         "update vehicle set v_name=?,wheels=?,seats=?,number_plate=? where v_id=?");  
 	            ps.setString(1,e.getName());  
@@ -51,28 +46,34 @@ public class vechicleDao {
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
-	        }catch(Exception ex){ex.printStackTrace();}  
+	        }catch(Exception ex){
+	        	System.out.println("Update 2: Connection failed");}  
 	          
 	        return status;  
 	    }  
-	    public static int delete(int id){  
+	    public static int delete(int id) throws SQLException{  
 	        int status=0;  
+	        Connection con=null;
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement("delete from vehicle where v_id=?");  
 	            ps.setInt(1,id);  
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
-	        }catch(Exception e){e.printStackTrace();}  
+	        }catch(Exception e){
+	        	System.out.println("Delete Connection failed");}  
+	        
+	        
 	          
 	        return status;  
 	    }  
-	    public static vechiclepojo getVehicleById(int id){  
+	    public static vechiclepojo getVehicleById(int id) throws SQLException{  
 	    	vechiclepojo e=new vechiclepojo();  
-	          
+	    	
+	    	Connection con=null;
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement("select * from vehicle where v_id=?");  
 	            ps.setInt(1,id);  
 	            System.out.println(id);
@@ -85,19 +86,20 @@ public class vechicleDao {
 	                e.setNumber_plate(rs.getString(5));  
 	            }  
 	            con.close();  
-	        }catch(Exception ex){ex.printStackTrace();}  
+	        }catch(Exception ex){ 
+	        	System.out.println("update 1 Connection failed");}  
 	          
 	        return e;  
 	    }  
-	    public static List<vechiclepojo> getAllVehicle(){  
+	    public static List<vechiclepojo> getAllVehicle() throws SQLException{  
 	        List<vechiclepojo> list=new ArrayList<vechiclepojo>();  
-	          
+	        Connection con=null;
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement("select * from vehicle");  
 	            ResultSet rs=ps.executeQuery();  
 	            while(rs.next()){  
-	            	System.out.println(rs.getInt(3));
+//	            	System.out.println(rs.getInt(3));
 	                vechiclepojo v=new vechiclepojo();  
 	                v.setId(rs.getInt(1));
 	                v.setName(rs.getString(2));
@@ -106,9 +108,12 @@ public class vechicleDao {
 	                v.setNumber_plate(rs.getString(5));
 	                
 	                list.add(v);  
+//	                System.out.println("Connection failed");
 	            }  
 	            con.close();  
-	        }catch(Exception e){e.printStackTrace();}  
+	        }catch(Exception e){ 
+	        	System.out.println(e.getMessage());
+	        	System.out.println("View Vehicle Connection failed");}  
 	          
 	        return list;  
 	    }  

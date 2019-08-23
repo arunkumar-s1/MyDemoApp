@@ -1,6 +1,7 @@
 package com.servlet;
 
-import java.io.IOException;  
+import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;  
 import javax.servlet.annotation.WebServlet;  
@@ -23,7 +24,12 @@ public class DeleteVehicle extends HttpServlet {
              throws ServletException, IOException {  
         String id=request.getParameter("id");  
         int v_id=Integer.parseInt(id);  
-        vechicleDao.delete(v_id);  
+        try {
+			vechicleDao.delete(v_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Delete Vehicle: Connection failed");
+		}  
         response.sendRedirect("ViewVehicle");  
     }  
 }  

@@ -38,7 +38,13 @@ public class SaveVechicle extends HttpServlet {
         v.setWheels(wheelsInt);
         v.setSeats(seatsInt);
         v.setNumber_plate(number_plate);
-        int status=vechicleDao.save(v);  
+        int status=0;
+		try {
+			status = vechicleDao.save(v);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Save Vehicle: Connection failed");
+		}  
         if(status>0){  
             out.print("<p>Record saved successfully!</p>");  
             request.getRequestDispatcher("AddVechicle.html").include(request, response);  

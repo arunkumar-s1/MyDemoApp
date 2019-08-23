@@ -10,18 +10,11 @@ import java.sql.*;
  * this class represent the database operation(CRUD) for advertisement 
  */
 public class AddDao {
-//	 public static Connection getConnection(){  
-//	        Connection con=null;  
-//	        try{  
-//	            Class.forName("oracle.jdbc.driver.OracleDriver");  
-//	            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","password");  
-//	        }catch(Exception e){System.out.println(e);}  
-//	        return con;  
-//	    }  
-	    public static int save(AddPojo a){  
+	    public static int save(AddPojo a) throws SQLException{  
 	        int status=0;  
+	        Connection con=null;
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement(  
 	                         "insert into advertisement values (?,?,?,?)");  
 //	            ps.setInt(1, v.getId());
@@ -32,14 +25,17 @@ public class AddDao {
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
-	        }catch(Exception ex){ex.printStackTrace();}  
+	        }catch(Exception ex){
+	        	 System.out.println("Connection failed");
+	        }  
 	          
 	        return status;  
 	    }  
-	    public static int update(AddPojo e){  
+	    public static int update(AddPojo e) throws SQLException{  
 	        int status=0;  
+	        Connection con=null;
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement(  
 	                         "update advertisement set name=?,kilometer=?,user_posted=? where id=?");  
 	            ps.setString(1,e.getName());  
@@ -51,28 +47,32 @@ public class AddDao {
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
-	        }catch(Exception ex){ex.printStackTrace();}  
+	        }catch(Exception ex){
+	        	System.out.println("Connection failed");}  
 	          
 	        return status;  
 	    }  
-	    public static int delete(int id){  
+	    public static int delete(int id) throws SQLException{  
 	        int status=0;  
+	        Connection con=null;
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement("delete from advertisement where id=?");  
 	            ps.setInt(1,id);  
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
-	        }catch(Exception e){e.printStackTrace();}  
+	        }catch(Exception e){
+	        	System.out.println("Delete Connection failed");}  
 	          
 	        return status;  
 	    }  
-	    public static AddPojo getAddById(int id){  
+	    public static AddPojo getAddById(int id) throws SQLException{  
 	    	AddPojo e=new AddPojo();  
+	    	Connection con=null;
 	          
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement("select * from advertisement where id=?");  
 	            ps.setInt(1,id);  
 	            System.out.println(id);
@@ -85,15 +85,17 @@ public class AddDao {
 	                
 	            }  
 	            con.close();  
-	        }catch(Exception ex){ex.printStackTrace();}  
+	        }catch(Exception ex){
+	        	System.out.println("Update 1 Connection failed");}  
 	          
 	        return e;  
 	    }  
-	    public static List<AddPojo> getAllAdd(){  
+	    public static List<AddPojo> getAllAdd() throws SQLException{  
 	        List<AddPojo> list=new ArrayList<AddPojo>();  
+	        Connection con=null;
 	          
 	        try{  
-	            Connection con=DatabaseConnection.getConnection();  
+	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement("select * from advertisement");  
 	            ResultSet rs=ps.executeQuery();  
 	            while(rs.next()){  
@@ -106,7 +108,8 @@ public class AddDao {
 	                list.add(v);  
 	            }  
 	            con.close();  
-	        }catch(Exception e){e.printStackTrace();}  
+	        }catch(Exception e){
+	        	System.out.println("Connection failed");}  
 	          
 	        return list;  
 	    }  

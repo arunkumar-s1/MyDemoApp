@@ -1,7 +1,8 @@
 package com.servlet;
 
 import java.io.IOException;  
-import java.io.PrintWriter;  
+import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -35,22 +36,29 @@ public class ViewAdd extends HttpServlet {
         String id=request.getParameter("id");  
         System.out.println("View: "+id);
           
-        List<AddPojo> list=AddDao.getAllAdd();  
+        List<AddPojo> list = null;
+		try {
+			list = AddDao.getAllAdd();
+			   out.print("<table border='1' width='100%'");  
+		        out.print("<tr><th>Id</th><th>Name</th><th>Kilometer</th><th>User Posted</th><th>Edit</th><th>Delete</th></tr>");  
+		        for(AddPojo e:list){  
+		         out.print("<tr><td>"+e.getId()+"</td>"
+		        		 	+ "<td>"+e.getName()+"</td>"
+		        		 			+ "<td>"+e.getKilometer()+"</td>"
+		        		 					+ "<td>"+e.getUser_posted()+"</td>"
+//		        		 							+ "<td>"+e.getNumber_plate()+"</td>"
+//		                 +"<td>"+e.getEmail()+"</td><td>"+e.getCountry()+"</td>
+		        		 +"<td><a href='UpdateAdd1?id="+e.getId()+"'>Update</a></td>  "
+		                 +"<td><a href='DeleteAdd?id="+e.getId()+"'>delete</a></td></tr>");  
+		        }  
+		        out.print("</table><br><br>");  
+		        out.print("<a href='ProfileServlet'>Back to Profile</a>");
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			System.out.println("View Add: Connection failed");
+		}  
           
-        out.print("<table border='1' width='100%'");  
-        out.print("<tr><th>Id</th><th>Name</th><th>Kilometer</th><th>User Posted</th><th>Edit</th><th>Delete</th></tr>");  
-        for(AddPojo e:list){  
-         out.print("<tr><td>"+e.getId()+"</td>"
-        		 	+ "<td>"+e.getName()+"</td>"
-        		 			+ "<td>"+e.getKilometer()+"</td>"
-        		 					+ "<td>"+e.getUser_posted()+"</td>"
-//        		 							+ "<td>"+e.getNumber_plate()+"</td>"
-//                 +"<td>"+e.getEmail()+"</td><td>"+e.getCountry()+"</td>
-        		 +"<td><a href='UpdateAdd1?id="+e.getId()+"'>Update</a></td>  "
-                 +"<td><a href='DeleteAdd?id="+e.getId()+"'>delete</a></td></tr>");  
-        }  
-        out.print("</table><br><br>");  
-        out.print("<a href='ProfileServlet'>Back to Profile</a>");
+     
         out.close();  
     }  
 }  
