@@ -26,6 +26,7 @@ public class vechicleDao {
 	              
 	            con.close();  
 	        }catch(Exception ex){
+	        	System.out.println(ex.getMessage());
 	        System.out.println("Connection failed");}  
 	          
 	        return status;  
@@ -47,6 +48,7 @@ public class vechicleDao {
 	              
 	            con.close();  
 	        }catch(Exception ex){
+	        	System.out.println(ex.getMessage());
 	        	System.out.println("Update 2: Connection failed");}  
 	          
 	        return status;  
@@ -62,6 +64,7 @@ public class vechicleDao {
 	              
 	            con.close();  
 	        }catch(Exception e){
+	        	System.out.println(e.getMessage());
 	        	System.out.println("Delete Connection failed");}  
 	        
 	        
@@ -87,6 +90,7 @@ public class vechicleDao {
 	            }  
 	            con.close();  
 	        }catch(Exception ex){ 
+	        	System.out.println(ex.getMessage());
 	        	System.out.println("update 1 Connection failed");}  
 	          
 	        return e;  

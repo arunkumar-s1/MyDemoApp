@@ -26,6 +26,7 @@ public class AddDao {
 	              
 	            con.close();  
 	        }catch(Exception ex){
+	        	System.out.println(ex.getMessage());
 	        	 System.out.println("Connection failed");
 	        }  
 	          
@@ -48,6 +49,7 @@ public class AddDao {
 	              
 	            con.close();  
 	        }catch(Exception ex){
+	        	System.out.println(ex.getMessage());
 	        	System.out.println("Connection failed");}  
 	          
 	        return status;  
@@ -63,6 +65,7 @@ public class AddDao {
 	              
 	            con.close();  
 	        }catch(Exception e){
+	        	System.out.println(e.getMessage());
 	        	System.out.println("Delete Connection failed");}  
 	          
 	        return status;  
@@ -86,6 +89,7 @@ public class AddDao {
 	            }  
 	            con.close();  
 	        }catch(Exception ex){
+	        	System.out.println(ex.getMessage());
 	        	System.out.println("Update 1 Connection failed");}  
 	          
 	        return e;  
@@ -109,6 +113,7 @@ public class AddDao {
 	            }  
 	            con.close();  
 	        }catch(Exception e){
+	        	System.out.println(e.getMessage());
 	        	System.out.println("Connection failed");}  
 	          
 	        return list;  
