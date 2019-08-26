@@ -25,10 +25,24 @@ public class AddDao {
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
-	        }catch(Exception ex){
-	        	System.out.println(ex.getMessage());
-	        	 System.out.println("Connection failed");
-	        }  
+	        }catch(SQLException se){
+	            //Handle errors for JDBC
+	        	System.out.println(se.getMessage());
+	 	        System.out.println("Connection failed");
+	         }catch(Exception e){
+	        	 System.out.println(e.getMessage());
+	 	        System.out.println("Connection failed");
+	        	 //Handle errors for Class.forName
+	         }finally{
+	            //finally block used to close resources
+	            try{
+	               if(con!=null)
+	                  con.close();
+	            }catch(SQLException se){
+	            	System.out.println(se.getMessage());
+		 	        System.out.println("Connection failed");
+	            }//end finally try
+	         }
 	          
 	        return status;  
 	    }  
@@ -48,10 +62,24 @@ public class AddDao {
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
-	        }catch(Exception ex){
-	        	System.out.println(ex.getMessage());
-	        	System.out.println("Connection failed");}  
-	          
+	        }catch(SQLException se){
+	            //Handle errors for JDBC
+	        	System.out.println(se.getMessage());
+	 	        System.out.println("Connection failed");
+	         }catch(Exception ex){
+	        	 System.out.println(ex.getMessage());
+	 	        System.out.println("Connection failed");
+	        	 //Handle errors for Class.forName
+	         }finally{
+	            //finally block used to close resources
+	            try{
+	               if(con!=null)
+	                  con.close();
+	            }catch(SQLException se){
+	            	System.out.println(se.getMessage());
+		 	        System.out.println("Connection failed");
+	            }//end finally try
+	         }
 	        return status;  
 	    }  
 	    public static int delete(int id) throws SQLException{  
@@ -64,9 +92,24 @@ public class AddDao {
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
-	        }catch(Exception e){
-	        	System.out.println(e.getMessage());
-	        	System.out.println("Delete Connection failed");}  
+	        }catch(SQLException se){
+	            //Handle errors for JDBC
+	        	System.out.println(se.getMessage());
+	 	        System.out.println("Connection failed");
+	         }catch(Exception e){
+	        	 System.out.println(e.getMessage());
+	 	        System.out.println("Connection failed");
+	        	 //Handle errors for Class.forName
+	         }finally{
+	            //finally block used to close resources
+	            try{
+	               if(con!=null)
+	                  con.close();
+	            }catch(SQLException se){
+	            	System.out.println(se.getMessage());
+		 	        System.out.println("Connection failed");
+	            }//end finally try
+	         }
 	          
 	        return status;  
 	    }  
@@ -88,9 +131,24 @@ public class AddDao {
 	                
 	            }  
 	            con.close();  
-	        }catch(Exception ex){
-	        	System.out.println(ex.getMessage());
-	        	System.out.println("Update 1 Connection failed");}  
+	        }catch(SQLException se){
+	            //Handle errors for JDBC
+	        	System.out.println(se.getMessage());
+	 	        System.out.println("Connection failed");
+	         }catch(Exception ex){
+	        	 System.out.println(ex.getMessage());
+	 	        System.out.println("Connection failed");
+	        	 //Handle errors for Class.forName
+	         }finally{
+	            //finally block used to close resources
+	            try{
+	               if(con!=null)
+	                  con.close();
+	            }catch(SQLException se){
+	            	System.out.println(se.getMessage());
+		 	        System.out.println("Connection failed");
+	            }//end finally try
+	         }
 	          
 	        return e;  
 	    }  
@@ -112,9 +170,24 @@ public class AddDao {
 	                list.add(v);  
 	            }  
 	            con.close();  
-	        }catch(Exception e){
-	        	System.out.println(e.getMessage());
-	        	System.out.println("Connection failed");}  
+	        }catch(SQLException se){
+	            //Handle errors for JDBC
+	        	System.out.println(se.getMessage());
+	 	        System.out.println("Connection failed");
+	         }catch(Exception e){
+	        	 System.out.println(e.getMessage());
+	 	        System.out.println("Connection failed");
+	        	 //Handle errors for Class.forName
+	         }finally{
+	            //finally block used to close resources
+	            try{
+	               if(con!=null)
+	                  con.close();
+	            }catch(SQLException se){
+	            	System.out.println(se.getMessage());
+		 	        System.out.println("Connection failed");
+	            }//end finally try
+	         }
 	          
 	        return list;  
 	    }  
