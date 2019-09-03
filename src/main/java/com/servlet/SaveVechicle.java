@@ -2,6 +2,8 @@ package com.servlet;
 
 import java.io.IOException;  
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;  
@@ -26,20 +28,25 @@ public class SaveVechicle extends HttpServlet {
         rd.include(request, response);//method may be include or forward  
 //        String id=request.getParameter("v_id"); 
 //        int v_id = Integer.parseInt(id);
-        String name=request.getParameter("v_name");  
-        String wheels=request.getParameter("wheels");
-        int wheelsInt=Integer.parseInt(wheels);
-        String seats=request.getParameter("seats");
-        int seatsInt=Integer.parseInt(seats);
-        String number_plate=request.getParameter("number_plate");  
-        vechiclepojo v=new vechiclepojo();  
-//        v.setId(v_id);
-        v.setName(name);
-        v.setWheels(wheelsInt);
-        v.setSeats(seatsInt);
-        v.setNumber_plate(number_plate);
         int status=0;
 		try {
+			String name=request.getParameter("v_name");  
+	        String wheels=request.getParameter("wheels");
+	        int wheelsInt=Integer.parseInt(wheels);
+	        String seats=request.getParameter("seats");
+	        int seatsInt=Integer.parseInt(seats);
+	        String number_plate=request.getParameter("number_plate");  
+	        String date_of_purchase=request.getParameter("date_of_purchase");  
+	        Date date_of_purchase1=new SimpleDateFormat("yyyy-MM-dd").parse(date_of_purchase);  
+	        System.out.println("date_of_purchase: "+date_of_purchase1);
+	        vechiclepojo v=new vechiclepojo();  
+//	        v.setId(v_id);
+	        v.setName(name);
+	        v.setWheels(wheelsInt);
+	        v.setSeats(seatsInt);
+	        v.setNumber_plate(number_plate);
+	        v.setDateOfPurchase(date_of_purchase1);
+	        
 			status = vechicleDao.save(v);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

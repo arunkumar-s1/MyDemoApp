@@ -17,3 +17,11 @@ create table advertisement(name varchar(10),id int primary key,kilometer varchar
 
 /*inserting values to advertisement */
 insert into advertisement values('Audi',4,'55km','This is a Car');
+
+create table dateDemo(date_time DATE )
+INSERT INTO dateDemo (date_time) VALUES (TO_DATE('1994/12/16 12:05:56', 'yyyy/mm/dd hh:mi:ss'));
+
+select * from dateDemo
+
+ALTER TABLE vehicle
+ADD date_of_purchase DATE;

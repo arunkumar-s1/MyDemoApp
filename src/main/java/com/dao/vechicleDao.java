@@ -6,6 +6,8 @@ import com.beanclass.vechiclepojo;
 import com.database.connection.DatabaseConnection;
 
 import java.sql.*;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 /*
  * this class represent the database operation(CRUD) for Vehicle 
  */
@@ -16,12 +18,16 @@ public class vechicleDao {
 	        try{  
 	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement(  
-	                         "insert into vehicle values (seq_person.nextval,?,?,?,?)");  
+	                         "insert into vehicle values (seq_person.nextval,?,?,?,?,?)");  
 //	            ps.setInt(1, v.getId());
 	            ps.setString(1,v.getName()); 
 	            ps.setInt(2, v.getWheels());
 	            ps.setInt(3, v.getSeats());
 	            ps.setString(4, v.getNumber_plate());
+	            java.sql.Date sqlDate = new java.sql.Date(v.getDateOfPurchase().getTime());
+	            System.out.println("sqlDate:" + sqlDate);
+
+	            ps.setDate(5, sqlDate);
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
@@ -52,13 +58,15 @@ public class vechicleDao {
 	        try{  
 	            con=DatabaseConnection.getConnection();  
 	            PreparedStatement ps=con.prepareStatement(  
-	                         "update vehicle set v_name=?,wheels=?,seats=?,number_plate=? where v_id=?");  
+	                         "update vehicle set v_name=?,wheels=?,seats=?,number_plate=?,date_of_purchase=? where v_id=?");  
 	            ps.setString(1,e.getName());  
 	            ps.setInt(2,e.getWheels());  
 	            ps.setInt(3,e.getSeats());  
 	            ps.setString(4,e.getNumber_plate());  
-	            ps.setInt(5,e.getId());  
-	              
+	            java.sql.Date sqlDate = new java.sql.Date(e.getDateOfPurchase().getTime());
+	            System.out.println("sqlData: "+sqlDate);
+	            ps.setDate(5, sqlDate);
+	            ps.setInt(6,e.getId());  
 	            status=ps.executeUpdate();  
 	              
 	            con.close();  
@@ -129,6 +137,7 @@ public class vechicleDao {
 	                e.setWheels(rs.getInt(3));  
 	                e.setSeats(rs.getInt(4));  
 	                e.setNumber_plate(rs.getString(5));  
+	                e.setDateOfPurchase(rs.getDate(6));
 	            }  
 	            con.close();  
 	        }catch(SQLException se){
@@ -161,12 +170,20 @@ public class vechicleDao {
 	            ResultSet rs=ps.executeQuery();  
 	            while(rs.next()){  
 //	            	System.out.println(rs.getInt(3));
-	                vechiclepojo v=new vechiclepojo();  
+//	            	java.sql.Timestamp ts = rs.getTimestamp("date_time");
+//	            	System.out.println("Ts : "+ts);
+//	            	java.sql.Date  date      = new java.sql.Date(ts.getTime());  
+//	            	System.out.println("Date : "+date);
+//	            	java.util.Date dd = new java.util.Date(date.getTime());
+//	            	SimpleDateFormat sdf=new SimpleDateFormat("dd-mm-yy HH:mm:ss");
+//	            	System.out.println("Date : "+sdf.format(dd));
+	                vechiclepojo v=new vechiclepojo();
 	                v.setId(rs.getInt(1));
 	                v.setName(rs.getString(2));
 	                v.setWheels(rs.getInt(3));
 	                v.setSeats(rs.getInt(4));
 	                v.setNumber_plate(rs.getString(5));
+	                v.setDateOfPurchase(rs.getDate(6));
 	                
 	                list.add(v);  
 //	                System.out.println("Connection failed");

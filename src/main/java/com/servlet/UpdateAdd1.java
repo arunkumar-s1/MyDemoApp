@@ -40,7 +40,7 @@ public class UpdateAdd1 extends HttpServlet {
 		        out.print("<tr><td></td><td><input type='hidden' name='id' value='"+e.getId()+"'/></td></tr>");  
 		        out.print("<tr><td>Name:</td><td><input type='text' name='name' value='"+e.getName()+"'/></td></tr>");  
 		        out.print("<tr><td>Number of Wheels:</td><td><input type='text' name='kilometer' value='"+e.getKilometer()+"'/></td></tr>");  
-		        out.print("<tr><td>Number of Seats:</td><td><input type='text' name='user_posted' value='"+e.getUser_posted()+"'/></td></tr>");  
+		        out.print("<tr><td>Number of Seats:</td><td><input type='text' name='user_posted' value='"+e.getUser_posted()+"'/></td></tr>"); 
 //		        out.print("<tr><td>Number Plate:</td><td><input type='text' name='number_plate' value='"+e.getNumber_plate()+"'/></td></tr>");  
 //		        out.print("<tr><td>Country:</td><td>");  
 //		        out.print("<select name='country' style='width:150px'>");  

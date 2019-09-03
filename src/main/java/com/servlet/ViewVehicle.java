@@ -37,13 +37,14 @@ public class ViewVehicle extends HttpServlet {
 			list = vechicleDao.getAllVehicle();
 			if(list!=null) {
 			  out.print("<table border='1' width='100%'");  
-		        out.print("<tr><th>Id</th><th>Name</th><th><Wheels</th><th>Seats</th><th>Number plate</th><th>Edit</th><th>Delete</th></tr>");  
+		        out.print("<tr><th>Id</th><th>Name</th><th><Wheels</th><th>Seats</th><th>Number plate</th><th>Year Of Purchase</th><th>Edit</th><th>Delete</th></tr>");  
 		        for(vechiclepojo e:list){  
 		         out.print("<tr><td>"+e.getId()+"</td>"
 		        		 	+ "<td>"+e.getName()+"</td>"
 		        		 			+ "<td>"+e.getWheels()+"</td>"
 		        		 					+ "<td>"+e.getSeats()+"</td>"
 		        		 							+ "<td>"+e.getNumber_plate()+"</td>"
+		        		 									+ "<td>"+e.getDateOfPurchase()+"</td>"
 //		                 +"<td>"+e.getEmail()+"</td><td>"+e.getCountry()+"</td>
 //		        		 +"<td><a href='ViewAdd?id="+e.getId()+"'>View Advertisement</a></td>  "  
 //		        		 +"<td><a href='AddAdvertisement.jsp?id="+e.getId()+"'>Add Advertisement</a></td>  "        		 							

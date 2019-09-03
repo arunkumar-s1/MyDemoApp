@@ -7,28 +7,6 @@
   <name>Vechicle_Project Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <packaging>war</packaging>
-	<build>
-		<sourceDirectory>src</sourceDirectory>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
-				<configuration>
-					<warSourceDirectory>WebContent</warSourceDirectory>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
-			</plugin>
-		</plugins>
-		 <finalName>Vechicle_Project</finalName>
-	</build>
   <dependencies>
       <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
         <dependency>

@@ -158,7 +158,7 @@ public class AddDao {
 	          
 	        try{  
 	            con=DatabaseConnection.getConnection();  
-	            PreparedStatement ps=con.prepareStatement("select * from advertisement");  
+	            PreparedStatement ps=con.prepareStatement ("select * from advertisement");
 	            ResultSet rs=ps.executeQuery();  
 	            while(rs.next()){  
 	            	System.out.println(rs.getString(3));

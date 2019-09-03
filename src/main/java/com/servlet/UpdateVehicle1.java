@@ -33,12 +33,15 @@ public class UpdateVehicle1 extends HttpServlet {
 				e = vechicleDao.getVehicleById(v_id);
 				if(e.getId()!=0) {
 			  out.print("<form action='UpdateVehicle2' method='post'>");  
+			  
+			  
 		        out.print("<table>");  
 		        out.print("<tr><td></td><td><input type='hidden' name='id' value='"+e.getId()+"'/></td></tr>");  
 		        out.print("<tr><td>Name:</td><td><input type='text' name='name' value='"+e.getName()+"'/></td></tr>");  
 		        out.print("<tr><td>Number of Wheels:</td><td><input type='number' name='wheels' value='"+e.getWheels()+"'/></td></tr>");  
 		        out.print("<tr><td>Number of Seats:</td><td><input type='number' name='seats' value='"+e.getSeats()+"'/></td></tr>");  
-		        out.print("<tr><td>Number Plate:</td><td><input type='text' name='number_plate' value='"+e.getNumber_plate()+"'/></td></tr>");  
+		        out.print("<tr><td>Number Plate:</td><td><input type='text' name='number_plate' value='"+e.getNumber_plate()+"'/></td></tr>"); 
+		        out.print("<tr><td>Date Of Purchase:</td><td><input type='text' name='date_of_purchase' value='"+e.getDateOfPurchase()+"'/></td></tr>"); 
 //		        out.print("<tr><td>Country:</td><td>");  
 //		        out.print("<select name='country' style='width:150px'>");  
 //		        out.print("<option>India</option>");  
